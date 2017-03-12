@@ -13,6 +13,7 @@ public class Constants {
 	public static final String MOD_VERSION = "@VERSION@";
 
 	public static final String BLOCK_MACHINE = "machine";
+	public static final String FLUID_MUDDY_WATER = "muddy_water";
 
 	public enum BLOCK_MACHINES_META implements IStringSerializable {
 		OasisWell,
