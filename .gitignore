@@ -1,0 +1,38 @@
+# Idea
+/out
+/*.iml
+/*.ipr
+/*.iws
+/.idea
+/classes/
+logs
+
+#Eclipse
+/bin
+/*.launch
+/.classpath
+/.metadata
+/.pmd
+/.project
+/.settings
+
+# Stuff
+.DS_Store
+
+# Gradle
+/build
+/.gradle
+
+# Runtime files
+/run
+
+# Other tools
+
+#Nano backup file
+/*.save
+
+#Blender Backup Files
+*.blend1
+
+/CameraStudio_log.*
+*.hprof
