@@ -11,6 +11,9 @@ import net.teamio.oasis.Config;
 import net.teamio.oasis.Oasis;
 
 /**
+ * TileEntity class for the Oasis Well.
+ * Replenishes water source blocks in a configured range above the block.
+ *
  * Created by oliver on 2017-03-12.
  */
 public class OasisWell extends TileEntity implements ITickable {

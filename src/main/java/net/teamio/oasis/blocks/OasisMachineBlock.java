@@ -14,6 +14,8 @@ import net.teamio.oasis.tileentities.OasisWell;
 import javax.annotation.Nullable;
 
 /**
+ * Base machine block for all oasis tile entities.
+ *
  * Created by oliver on 2017-03-12.
  */
 public class OasisMachineBlock extends Block implements ITileEntityProvider {
