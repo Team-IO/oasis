@@ -99,7 +99,7 @@ task cleanupMtl {
 			String currentLine
 			while((currentLine = reader.readLine()) != null) {
 				if(isValidMtlLine(currentLine)) {
-					content.add(currentLine);
+					content.add(currentLine)
 				}
 			}
 			reader.close()
@@ -121,7 +121,7 @@ boolean isValidMtlLine(String line) {
 	line.startsWith('Ks') ||
 	line.startsWith('Ke')
 	) {
-		return false;
+		return false
 	}
-	return true;
+	return true
 }
