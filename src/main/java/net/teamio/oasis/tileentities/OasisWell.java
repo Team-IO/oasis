@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
+import net.teamio.oasis.Config;
 import net.teamio.oasis.Oasis;
 
 /**
@@ -14,51 +15,46 @@ import net.teamio.oasis.Oasis;
  */
 public class OasisWell extends TileEntity implements ITickable {
 
-	public static final int LUSH_MAX = 3000000;
-	public static final int LUSH_DECLINE = 1500;
-	public static final float MUD_CHANCE = 0.2f;
-	/**
-	 * Lush timer ticks down this amount when a water block is placed.
-	 */
-	public static final int LUSH_TICK_PLACEMENT = 150;
-
-
-	public static final int WELL_SIZE_X = 3;
-	public static final int WELL_SIZE_Z = 3;
-
-	private int lush = LUSH_MAX;
+	private int wellTimer = Config.well_timer;
 
 	@Override
 	public void update() {
 		if(world.isRemote) {
 			return;
 		}
-		if (lush > 0) {
-			lush--;
+		if(Config.well_count_ticks) {
+			if (wellTimer > 0) {
+				wellTimer--;
+			}
 		}
 
-		if(lush > 0) {
+		if(wellTimer > 0) {
 			// Replace with water
-			float replenishment = 1;
-			if(lush < LUSH_DECLINE) {
-				replenishment = (float)lush / LUSH_DECLINE;
-			}
 
-			if(world.rand.nextFloat() < replenishment) {
+			if(wellTimer < Config.well_timer_decline) {
+				float replenishment = (float) wellTimer / Config.well_timer_decline;
+
+				if(world.rand.nextFloat() < replenishment) {
+					replenishSingleBlock();
+				}
+			} else {
 				replenishSingleBlock();
 			}
+
 		} else {
-			// Replace with muddy water
-			if(world.rand.nextFloat() < MUD_CHANCE) {
-				mudSingleBlock();
+			if(Config.well_mud_chance > 0) {
+				// Replace with muddy water
+				if(world.rand.nextFloat() < Config.well_mud_chance) {
+					mudSingleBlock();
+				}
 			}
 
 		}
 	}
 
 	private void replenishSingleBlock() {
-		for(int x = 0; x < WELL_SIZE_X; x++) {
-			for(int z = 0; z < WELL_SIZE_Z; z++) {
+		for(int x = 0; x < Config.well_size_x; x++) {
+			for(int z = 0; z < Config.well_size_z; z++) {
 				if(tryPlaceWater(pos.add(x, 1, z))) return;
 				if(tryPlaceWater(pos.add(x, 1, -z))) return;
 				if(tryPlaceWater(pos.add(-x, 1, z))) return;
@@ -68,8 +64,8 @@ public class OasisWell extends TileEntity implements ITickable {
 	}
 
 	private void mudSingleBlock() {
-		for(int x = 0; x < WELL_SIZE_X; x++) {
-			for(int z = 0; z < WELL_SIZE_Z; z++) {
+		for(int x = 0; x < Config.well_size_x; x++) {
+			for(int z = 0; z < Config.well_size_z; z++) {
 				if(tryPlaceMud(pos.add(x, 1, z))) return;
 				if(tryPlaceMud(pos.add(x, 1, -z))) return;
 				if(tryPlaceMud(pos.add(-x, 1, z))) return;
@@ -91,7 +87,9 @@ public class OasisWell extends TileEntity implements ITickable {
 		if(canReplaceWithWater(p)) {
 			world.setBlockState(p, Blocks.WATER.getDefaultState());
 
-			lush -= LUSH_TICK_PLACEMENT;
+			if(Config.well_count_replenishment > 0) {
+				wellTimer -= Config.well_count_replenishment;
+			}
 			return true;
 		}
 		return false;
