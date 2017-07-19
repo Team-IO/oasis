@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "state=forming": { "model": "sand" },
+    "state=proxy": { "model": "oasis:transparentBlock" },
+    "state=mb_windtrap": { "model": "oasis:multi/chute.obj" }
+  }
+}

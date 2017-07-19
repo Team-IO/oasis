@@ -13,7 +13,13 @@ public class Constants {
 	public static final String MOD_VERSION = "@VERSION@";
 
 	public static final String BLOCK_MACHINE = "machine";
+	public static final String BLOCK_MULTIBLOCK = "multiblock";
 	public static final String FLUID_MUDDY_WATER = "muddy_water";
+
+	public static final String TILEENTITY_OASIS_WELL = "oasis.well";
+	public static final String TILEENTITY_MULTIBLOCK_FORMER = "oasis.multiblock_former";
+	public static final String TILEENTITY_MULTIBLOCK_PROXY = "oasis.multiblock_proxy";
+	public static final String TILEENTITY_MB_WIND_TRAP = "oasis.multiblock.wind_trap";
 
 	public enum BLOCK_MACHINES_META implements IStringSerializable {
 		OasisWell,

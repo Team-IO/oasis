@@ -20,8 +20,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.teamio.oasis.blocks.MultiblockBlock;
 import net.teamio.oasis.blocks.OasisMachineBlock;
 import net.teamio.oasis.fluids.MuddyWater;
+import net.teamio.oasis.tileentities.MultiblockFormer;
+import net.teamio.oasis.tileentities.MultiblockProxy;
+import net.teamio.oasis.tileentities.OasisWell;
+import net.teamio.oasis.tileentities.WindTrap;
+import scala.collection.immutable.Stream;
 
 /**
  * Created by oliver on 2017-03-12.
@@ -36,6 +42,7 @@ public class Oasis {
 
 	private static CreativeTabs creativeTab;
 	public static OasisMachineBlock blockMachine;
+	public static MultiblockBlock blockMultiblock;
 	public static MuddyWater fluidMuddyWater;
 	public static BlockFluidClassic blockMuddyWater;
 
@@ -83,6 +90,7 @@ public class Oasis {
 		};
 
 		registerBlock(blockMachine = new OasisMachineBlock(), new ItemBlock(blockMachine), Constants.BLOCK_MACHINE);
+		registerBlock(blockMultiblock = new MultiblockBlock(), new ItemBlock(blockMultiblock), Constants.BLOCK_MULTIBLOCK);
 
 		fluidMuddyWater = new MuddyWater(Constants.FLUID_MUDDY_WATER);
 		FluidRegistry.registerFluid(fluidMuddyWater);
@@ -128,6 +136,11 @@ public class Oasis {
 			}
 		};
 		registerBlock(blockMuddyWater, new ItemBlock(blockMuddyWater), "fluid." + Constants.FLUID_MUDDY_WATER);
+
+		GameRegistry.registerTileEntity(OasisWell.class, Constants.TILEENTITY_OASIS_WELL);
+		GameRegistry.registerTileEntity(MultiblockFormer.class, Constants.TILEENTITY_MULTIBLOCK_FORMER);
+		GameRegistry.registerTileEntity(MultiblockProxy.class, Constants.TILEENTITY_MULTIBLOCK_PROXY);
+		GameRegistry.registerTileEntity(WindTrap.class, Constants.TILEENTITY_MB_WIND_TRAP);
 	}
 
 	@Mod.EventHandler
