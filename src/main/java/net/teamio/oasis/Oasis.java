@@ -15,6 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -46,6 +47,9 @@ public class Oasis {
 	public static MuddyWater fluidMuddyWater;
 	public static BlockFluidClassic blockMuddyWater;
 
+	@SidedProxy(clientSide = "net.teamio.oasis.ClientProxy", serverSide = "net.teamio.oasis.CommonProxy")
+	public static CommonProxy proxy;
+
 	private static void registerBlock(Block block, ItemBlock item, String name) {
 		registerBlock(block, name);
 		registerItem(item, name);
@@ -74,7 +78,7 @@ public class Oasis {
 
 		//MinecraftForge.EVENT_BUS.register(new CraftingHandler());
 		MinecraftForge.EVENT_BUS.register(new Config());
-		//MinecraftForge.EVENT_BUS.register(proxy);
+		MinecraftForge.EVENT_BUS.register(proxy);
 
 		/*
 		 * Read Config
@@ -145,6 +149,9 @@ public class Oasis {
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		/*
+		Rendering
+		 */
+		proxy.registerRenderStuff();
 	}
 }
