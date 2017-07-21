@@ -21,7 +21,7 @@ public class ClientProxy extends CommonProxy {
 		ModelLoaderRegistry.registerLoader(OBJLoader.INSTANCE);
 		OBJLoader.INSTANCE.addDomain(Constants.MOD_ID.toLowerCase());
 	}
-	
+
 	@Override
 	public void registerRenderStuff() {
 		//ModelLoaderRegistry.registerLoader(OBJLoader.INSTANCE);

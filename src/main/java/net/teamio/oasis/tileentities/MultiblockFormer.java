@@ -37,7 +37,7 @@ public class MultiblockFormer extends TileEntity implements ITickable {
 
 	@Override
 	public void update() {
-		if(multiblockType == null) {
+		if (multiblockType == null) {
 			return;
 		}
 
@@ -68,7 +68,7 @@ public class MultiblockFormer extends TileEntity implements ITickable {
 	}
 
 	public boolean isSameType(TileEntity te) {
-		if(multiblockType == null) {
+		if (multiblockType == null) {
 			return false;
 		}
 		return te instanceof MultiblockFormer && multiblockType.equals(((MultiblockFormer) te).multiblockType);

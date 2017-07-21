@@ -33,7 +33,7 @@ public class WindTrap extends MultiblockController implements ITickable {
 		int rate = 5;
 		int amount = 1;
 
-		if(timer >= rate) {
+		if (timer >= rate) {
 			timer -= rate;
 
 			fill(amount);
@@ -41,7 +41,7 @@ public class WindTrap extends MultiblockController implements ITickable {
 	}
 
 	private void fill(int amount) {
-		if(tank.getFluid() == null || tank.getFluid().getFluid() == FluidRegistry.WATER) {
+		if (tank.getFluid() == null || tank.getFluid().getFluid() == FluidRegistry.WATER) {
 			tank.fillInternal(new FluidStack(FluidRegistry.WATER, amount), true);
 		}
 	}
@@ -49,8 +49,8 @@ public class WindTrap extends MultiblockController implements ITickable {
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing side) {
-		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
-			return (T)tank;
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			return (T) tank;
 		}
 
 		return super.getCapability(capability, side);
@@ -58,7 +58,7 @@ public class WindTrap extends MultiblockController implements ITickable {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing side) {
-		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+		if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return true;
 		}
 

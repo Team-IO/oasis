@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 /**
  * Base machine block for all oasis tile entities.
- *
+ * <p>
  * Created by oliver on 2017-03-12.
  */
 public class OasisMachineBlock extends Block implements ITileEntityProvider {
@@ -35,7 +35,7 @@ public class OasisMachineBlock extends Block implements ITileEntityProvider {
 	public TileEntity createNewTileEntity(World world, int i) {
 		Constants.BLOCK_MACHINES_META meta = Constants.BLOCK_MACHINES_META.values()[i];
 
-		switch(meta) {
+		switch (meta) {
 			case OasisWell:
 				return new OasisWell();
 		}

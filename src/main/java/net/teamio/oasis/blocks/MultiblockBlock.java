@@ -9,7 +9,6 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -63,7 +62,7 @@ public class MultiblockBlock extends Block implements ITileEntityProvider {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new ExtendedBlockState(this, new IProperty[] {STATE}, new IUnlistedProperty[0]);
+		return new ExtendedBlockState(this, new IProperty[]{STATE}, new IUnlistedProperty[0]);
 	}
 
 	public boolean isFullCube(IBlockState state) {
@@ -86,11 +85,11 @@ public class MultiblockBlock extends Block implements ITileEntityProvider {
 		TileEntity te = world.getTileEntity(pos);
 
 		//TODO: make this NOT use instanceof
-		if(te instanceof MultiblockProxy) {
+		if (te instanceof MultiblockProxy) {
 			state = MultiblockRenderState.Proxy;
-		} else if(te instanceof MultiblockFormer) {
+		} else if (te instanceof MultiblockFormer) {
 			state = MultiblockRenderState.Forming;
-		} else if(te instanceof WindTrap) {
+		} else if (te instanceof WindTrap) {
 			state = MultiblockRenderState.MBWindTrap;
 		} else {
 			state = MultiblockRenderState.Forming;
