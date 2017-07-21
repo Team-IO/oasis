@@ -4,10 +4,10 @@
       "model": "sand"
     },
     "state=proxy": {
-      "model": "oasis:transparentBlock"
+      "model": "oasis:invisible"
     },
     "state=mbwindtrap": {
-      "model": "oasis:multi/chute.obj"
+      "model": "oasis:multi/miner.obj"
     }
   }
 }

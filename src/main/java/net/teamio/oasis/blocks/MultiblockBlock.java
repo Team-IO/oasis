@@ -9,6 +9,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -20,7 +21,6 @@ import net.teamio.oasis.tileentities.MultiblockProxy;
 import net.teamio.oasis.tileentities.WindTrap;
 
 import javax.annotation.Nullable;
-import javax.swing.plaf.multi.MultiPopupMenuUI;
 
 /**
  * Base machine block for all oasis tile entities.
@@ -64,6 +64,19 @@ public class MultiblockBlock extends Block implements ITileEntityProvider {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new ExtendedBlockState(this, new IProperty[] {STATE}, new IUnlistedProperty[0]);
+	}
+
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public int getLightOpacity(IBlockState p_getLightOpacity_1_, IBlockAccess p_getLightOpacity_2_, BlockPos p_getLightOpacity_3_) {
+		return 0;
+	}
+
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 
 	@Override
