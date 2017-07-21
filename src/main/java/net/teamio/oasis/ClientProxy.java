@@ -15,10 +15,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * Created by oliver on 2017-07-20.
  */
 public class ClientProxy extends CommonProxy {
+
 	@Override
-	public void registerRenderStuff() {
+	public void registerModelLoader() {
 		ModelLoaderRegistry.registerLoader(OBJLoader.INSTANCE);
 		OBJLoader.INSTANCE.addDomain(Constants.MOD_ID.toLowerCase());
+	}
+	
+	@Override
+	public void registerRenderStuff() {
+		//ModelLoaderRegistry.registerLoader(OBJLoader.INSTANCE);
+		//OBJLoader.INSTANCE.addDomain(Constants.MOD_ID.toLowerCase());
 
 		ItemModelMesher modelMesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 
@@ -29,7 +36,7 @@ public class ClientProxy extends CommonProxy {
 	/**
 	 * Registers & remembers a model location for inventory rendering for the
 	 * given item, for a single meta value.
-	 *
+	 * <p>
 	 * Specific for items using OBJ models.
 	 *
 	 * @param modelMesher
@@ -53,7 +60,7 @@ public class ClientProxy extends CommonProxy {
 
 	/**
 	 * Registers a model for inventory rendering for a single item.
-	 *
+	 * <p>
 	 * Default rendering, not for OBJ models.
 	 *
 	 * @param modelMesher
@@ -67,7 +74,7 @@ public class ClientProxy extends CommonProxy {
 
 	/**
 	 * Registers a model for inventory rendering for a single item.
-	 *
+	 * <p>
 	 * Default rendering, not for OBJ models.
 	 *
 	 * @param modelMesher

@@ -28,7 +28,6 @@ import net.teamio.oasis.tileentities.MultiblockFormer;
 import net.teamio.oasis.tileentities.MultiblockProxy;
 import net.teamio.oasis.tileentities.OasisWell;
 import net.teamio.oasis.tileentities.WindTrap;
-import scala.collection.immutable.Stream;
 
 /**
  * Created by oliver on 2017-03-12.
@@ -79,6 +78,8 @@ public class Oasis {
 		//MinecraftForge.EVENT_BUS.register(new CraftingHandler());
 		MinecraftForge.EVENT_BUS.register(new Config());
 		MinecraftForge.EVENT_BUS.register(proxy);
+
+		proxy.registerModelLoader();
 
 		/*
 		 * Read Config

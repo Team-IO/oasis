@@ -5,4 +5,6 @@ package net.teamio.oasis;
  */
 public class CommonProxy {
 	public void registerRenderStuff() {}
+
+	public void registerModelLoader() {}
 }
