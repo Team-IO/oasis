@@ -51,6 +51,7 @@ public class MultiblockProxy extends TileEntity {
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing side) {
+		//TODO: make the capabilities have constraints, where on the multiblock they are available
 		TileEntity c = getController();
 		if (c == null) {
 			return false;
