@@ -10,10 +10,13 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by oliver on 2017-07-20.
  */
+@SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
 	@Override
@@ -24,13 +27,9 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderStuff() {
-		//ModelLoaderRegistry.registerLoader(OBJLoader.INSTANCE);
-		//OBJLoader.INSTANCE.addDomain(Constants.MOD_ID.toLowerCase());
-
 		ItemModelMesher modelMesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 
 		registerItemDefault(modelMesher, Oasis.blockMuddyWater, 0, Constants.MOD_ID + ":fluid.muddy_water");
-		//ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(Constants.MOD_ID + ":" + Constants.FLUID_MUDDY_WATER, "inventory"));
 	}
 
 	/**
